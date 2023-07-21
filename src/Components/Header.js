@@ -16,7 +16,7 @@ function Header() {
   return (
     <div>
       <span>TODO</span>
-      {isDark == false ? (
+      {isDark === false ? (
         <BsMoonStarsFill onClick={themeDark} className="dark"></BsMoonStarsFill>
       ) : (
         <BsFillSunFill onClick={themeLight} className="light"></BsFillSunFill>
