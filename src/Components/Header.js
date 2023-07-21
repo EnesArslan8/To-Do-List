@@ -11,7 +11,6 @@ function Header() {
     setIsDark(false);
   };
 
-  console.log(isDark);
 
   return (
     <div>

@@ -3,7 +3,7 @@ import { BsPlusCircle } from "react-icons/bs";
 function SearchInput({ text, setText ,listItems,setListItems}) {
   const add = () => {
     if (text.trim() !== "") {
-      setListItems([ text,...listItems]);
+      setListItems([ { text: text, completed: false },...listItems]);
       setText("");
     }
   };
