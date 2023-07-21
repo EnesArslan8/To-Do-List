@@ -1,24 +1,13 @@
 import React, { useState } from "react";
 import { BsFillSunFill, BsMoonStarsFill } from "react-icons/bs";
 
-function Header() {
-  const [isDark, setIsDark] = useState(false);
-
-  const light={
-    
-  }
-
-  const themeDark = () => {
-
-    setIsDark(true);
-  };
-  const themeLight = () => {
-    setIsDark(false);
-  };
+function Header({backgroundImage,isDark,themeDark,themeLight}) {
+  
+  
 
 
   return (
-    <div className="header">
+    <div className={`header`}>
       <span className="title">TODO</span>
       {isDark === false ? (
         <BsMoonStarsFill onClick={themeDark} className="dark"></BsMoonStarsFill>

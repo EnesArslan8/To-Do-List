@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function List({ text, setText, setListItems, listItems }) {
+function List({ text, setText, setListItems, listItems, isDark }) {
   const [filteredItems, setFilteredItems] = useState([]);
 
   const [selectedOption, setSelectedOption] = useState("All");
@@ -24,6 +24,7 @@ function List({ text, setText, setListItems, listItems }) {
   const handleClearCompleted = () => {
     const activeItems = listItems.filter((item) => !item.completed);
     setListItems(activeItems);
+    setSelectedOption("All");
   };
 
   const handleFilterAll = () => {
@@ -49,61 +50,125 @@ function List({ text, setText, setListItems, listItems }) {
     color: "rgba(200,100,0)",
   };
 
- 
+  let customLightStlye={
+    color: "rgba(255,0,0)",
+  }
 
   return (
-    <div className="list">
-      <ul className="ul">
-        {filteredItems.map((item, index) => (
-          <label>
-            <li className="li" key={index}>
-              <input className="radioBtn" type="radio"></input>
-              <span
-                style={{
-                  textDecoration: item.completed ? "line-through" : "none",
-                }}
-                onClick={() => toggleCompleted(index)}
-              >
-                {item.text}
-              </span>
-            </li>
-          </label>
-        ))}
-      </ul>
+    <>
+    {isDark===true? <div className="list">
+        <ul className="ul">
+          {filteredItems.map((item, index) => (
+            <label>
+              <li className="li" key={index}>
+                <input className="radioBtn" type="radio"></input>
+                <span
+                  style={{
+                    textDecoration: item.completed ? "line-through" : "none",
+                  }}
+                  onClick={() => toggleCompleted(index)}
+                >
+                  {item.text}
+                </span>
+              </li>
+            </label>
+          ))}
+        </ul>
 
-      <div>
-        {listItems.length !== 0 && (
-          <div className="listFooter">
-            <span className="itemCounter">{listItems.length} items left</span>
-            <div className="filter">
-              <span
-                style={selectedOption === "All" ? customStyle : null}
-                onClick={handleFilterAll}
-              >
-                All
+        <div>
+          {listItems.length !== 0 && (
+            <div className="listFooter">
+              <span className="itemCounter">{listItems.length} items left</span>
+              <div className="filter">
+                <span
+                  style={selectedOption === "All" ? customStyle : null}
+                  onClick={handleFilterAll}
+                >
+                  All
+                </span>
+                <span
+                  style={selectedOption === "Active" ? customStyle : null}
+                  className="spans"
+                  onClick={handleFilterActive}
+                >
+                  Active
+                </span>
+                <span
+                  style={
+                    selectedOption === "Completed" && filteredItems.length > 0
+                      ? customStyle
+                      : null
+                  }
+                  onClick={handleFilterCompleted}
+                >
+                  Completed
+                </span>
+              </div>
+              <span className="clear" onClick={handleClearCompleted}>
+                Clear Completed
               </span>
-              <span
-                style={selectedOption === "Active" ? customStyle : null}
-                className="spans"
-                onClick={handleFilterActive}
-              >
-                Active
-              </span>
-              <span
-                style={selectedOption === "Completed" && filteredItems.length > 0 ? customStyle : null}
-                onClick={handleFilterCompleted}
-              >
-                Completed
-              </span>
-              
             </div>
-            <span className="clear" onClick={handleClearCompleted}>
-              Clear Completed
-            </span>
-          </div>
-        )}
-      </div>
-    </div>
+          )}
+        </div>
+      </div>:
+      /********************************************** */                         
+       <div className="listLight">
+        <ul className="ulLight">
+          {filteredItems.map((item, index) => (
+            <label>
+              <li className="liLight" key={index}>
+                <input className="radioBtnLight" type="radio"></input>
+                <span
+                  style={{
+                    textDecoration: item.completed ? "line-through" : "none",
+                  }}
+                  onClick={() => toggleCompleted(index)}
+                >
+                  {item.text}
+                </span>
+              </li>
+            </label>
+          ))}
+        </ul>
+
+        <div>
+          {listItems.length !== 0 && (
+            <div className="listFooterLight">
+              <span className="itemCounterLight">{listItems.length} items left</span>
+              <div className="filter">
+                <span 
+                  style={selectedOption === "All" ? customLightStlye : null}
+                  onClick={handleFilterAll}
+                >
+                  All
+                </span>
+                <span 
+                  style={selectedOption === "Active" ? customLightStlye : null}
+                  className="spans"
+                  onClick={handleFilterActive}
+                >
+                  Active
+                </span>
+                <span 
+                  style={
+                    selectedOption === "Completed" && filteredItems.length > 0
+                      ? customLightStlye
+                      : null
+                  }
+                  onClick={handleFilterCompleted}
+                >
+                  Completed
+                </span>
+              </div>
+              <span className="clear" onClick={handleClearCompleted}>
+                Clear Completed
+              </span>
+            </div>
+          )}
+        </div>
+      </div>}
+      
+    </>
   );
 }
 

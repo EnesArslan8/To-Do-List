@@ -28,7 +28,6 @@ body {
   /* background-image:linear-gradient(#BA8B02, #181818, 90deg); */
   background-image: linear-gradient(to left, #ba8c026c, #18181849),
     url(https://wallpapers.com/images/hd/black-red-4k-bridge-fb5gwv3gvd14g1qx.jpg);
-
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -53,6 +52,7 @@ body {
   min-width: 35%;
   max-width: 50%;
 }
+
 .title {
   letter-spacing: 30px;
   font-weight: 700;
@@ -98,6 +98,50 @@ body {
   border: none;
   border-radius: 4px;
 }
+.input .inputAreaLight {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  position: relative;
+}
+.input .inputAreaLight .addBtn {
+  position: absolute;
+  top: center;
+  left: 20px;
+  z-index: 2;
+  font-size: 30px;
+  cursor: pointer;
+}
+.input .inputAreaLight .textInput {
+  width: 100%;
+  padding: 30px 20px 30px 80px;
+  background-color: #aeaeae;
+  outline: none;
+  color: #000;
+  font-size: 20px;
+  border: none;
+  border-radius: 4px;
+}
+.addBtnLight{
+  position: absolute;
+  top: center;
+  left: 20px;
+  z-index: 2;
+  color: #222;
+  font-size: 30px;
+  cursor: pointer;
+}
+.input .inputAreaLight .textInputLight {
+  width: 100%;
+  padding: 30px 20px 30px 80px;
+  background-color: #fff;
+  outline: none;
+  color: #000;
+  font-size: 20px;
+  border: none;
+  border-radius: 4px;
+}
 .list {
   /* overflow-y: scroll; */
   position: absolute;
@@ -111,8 +155,22 @@ body {
   background-color: #222;
   border-radius: 4px;
 }
+.listLight {
+  position: absolute;
+  top: 40%;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  min-width: 35%;
+  max-height: 53%;
+  max-width: 50%;
+  background-color: #fff;
+  color: #222;
+  border-radius: 4px;
+}
 .list .ul {
     overflow-y: scroll;
+    overflow-x: hidden;
   }
 .ul::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9);
@@ -135,6 +193,31 @@ body {
     #18181849
   );
 }
+.listLight .ulLight {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.ulLight::-webkit-scrollbar-track {
+-webkit-box-shadow: inset 0 0 6px rgba(100, 100, 100, 0.9);
+border-radius: 10px;
+background-color: transparent;
+}
+
+.ulLight::-webkit-scrollbar {
+width: 12px;
+background-color: transparent;
+}
+
+.ulLight::-webkit-scrollbar-thumb {
+border-radius: 10px;
+background-color: #ba8c026c;
+background-image: -webkit-linear-gradient(
+  90deg,
+  rgba(150,0,0),
+  rgba(250, 0, 0),
+  rgba(200,0,0)
+);
+}
 .list .ul .li {
     display: flex;
     align-items: center;
@@ -143,6 +226,15 @@ body {
   color: #999;
   padding: 20px 40px;
   border-bottom: 1px solid #555;
+}
+.listLight .ulLight .liLight {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+font-size: 25px;
+color: #000;
+padding: 20px 40px;
+border-bottom: 1px solid #999;
 }
 input[type="radio"] {
   -webkit-appearance: none;
@@ -177,6 +269,40 @@ input[type="radio"]:focus {
   outline: max(1px, 0.05em) solid currentColor;
   outline-offset: max(2px, 0.15em);
 }
+/**/
+input[class="radioBtnLight"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--form-background);
+  margin-right: 1em;
+  font: inherit;
+  color: rgba(200, 000, 0, 1);
+  width: .7em;
+  height: .7em;
+  border: 0.15em solid currentColor;
+  border-radius: 50%;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
+}
+input[class="radioBtnLight"]::before {
+  content: "";
+  color: #ede;
+  width: 0.45em;
+  height: 0.45em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+  background-color: #ede;
+}
+input[class ="radioBtnLight"]:checked::before {
+  transform: scale(1);
+}
+input[class="radioBtnLight"]:focus {
+  outline: max(1px, 0.05em) solid currentColor;
+  outline-offset: max(2px, 0.15em);
+}
 .listFooter{
     padding: 20px 10px;
     display: flex;
@@ -187,8 +313,21 @@ input[type="radio"]:focus {
     font-weight: 400;
     
 }
+.listFooterLight{
+  padding: 20px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #777;
+  font-size: 15px;
+  font-weight: 400;
+  
+}
 .itemCounter{
     user-select: none;
+}
+.itemCounterLight{
+  user-select: none;
 }
 .filter{
     display: flex;
