@@ -1,6 +1,12 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 function List({ text, setText, setListItems, listItems }) {
+  const [filteredItems, setFilteredItems] = useState([]);
+  useEffect(() => {
+    // Başlangıçta, "All" filtresi seçili olacak
+    setFilteredItems(listItems);
+  }, [listItems]);
+
   const toggleCompleted = (index) => {
     const updatedItems = listItems.map((item, i) => {
       if (i === index) {
@@ -15,10 +21,26 @@ function List({ text, setText, setListItems, listItems }) {
     setListItems(activeItems);
   };
 
+  const handleFilterAll = () => {
+    setFilteredItems(listItems);
+  };
+  const handleFilterActive = () => {
+    const activeItems = listItems.filter((item) => !item.completed);
+    if (activeItems && activeItems.length > 0) {
+      setFilteredItems(activeItems);
+    }
+  };
+  const handleFilterCompleted = () => {
+    const completedItems = listItems.filter((item) => item.completed);
+    if (completedItems && completedItems.length > 0) {
+      setFilteredItems(completedItems);
+    }
+  };
+
   return (
     <div>
       <ul>
-        {listItems.map((item, index) => (
+        {filteredItems.map((item, index) => (
           <li key={index}>
             <span
               style={{
@@ -37,11 +59,12 @@ function List({ text, setText, setListItems, listItems }) {
           <>
             <span>{listItems.length} items left</span>
             <div>
-              <span>All</span>
-              <span>Active</span>
-              <span>Completed</span>
+              <span onClick={handleFilterAll}>All</span>
+              <span onClick={handleFilterActive}>Active</span>
+              <span onClick={handleFilterCompleted}>Completed</span>
             </div>
-            <span onClick={handleClearCompleted}>Clear Completed</span>
+            
+            <span  onClick={handleClearCompleted}>Clear Completed</span>
           </>
         )}
       </div>
