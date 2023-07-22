@@ -18,6 +18,13 @@ body {
   flex-direction: column;
   background-color: #111;
 }
+/* .bgColorDark{
+  background-color: #111;
+  
+}
+.bgColorLight{
+  background-color: #aeaeae;
+} */
 .background {
   position: absolute;
   top: 0;

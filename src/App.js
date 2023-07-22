@@ -26,34 +26,81 @@ function App() {
     setIsDark(false);
   };
 
+
+  const bgColorDark={
+    backgroundColor:'#111',
+    height:'100vh',
+    width:'100vw'
+  }
+  const bgColorLight={
+    backgroundColor:'#ddd',
+  }
+
   return (
-    <div className="App">
-      <Background
-        backgroundImage={backgroundImage}
-        isDark={isDark}
-        themeDark={themeDark}
-        themeLight={themeLight}
-      ></Background>
-      <Header
-        backgroundImage={backgroundImage}
-        isDark={isDark}
-        themeDark={themeDark}
-        themeLight={themeLight}
-      ></Header>
-      <SearchInput
-        isDark={isDark}
-        text={text}
-        setText={setText}
-        listItems={listItems}
-        setListItems={setListItems}
-      ></SearchInput>
-      <List
-        text={text}
-        isDark={isDark}
-        setText={setText}
-        listItems={listItems}
-        setListItems={setListItems}
-      ></List>
+    <div>
+      {isDark === true ? (
+        <div style={bgColorDark} /*className="bgColorDark"*/>
+          <div className="App">
+            <Background
+              backgroundImage={backgroundImage}
+              isDark={isDark}
+              themeDark={themeDark}
+              themeLight={themeLight}
+            ></Background>
+            <Header
+              backgroundImage={backgroundImage}
+              isDark={isDark}
+              themeDark={themeDark}
+              themeLight={themeLight}
+            ></Header>
+            <SearchInput
+              isDark={isDark}
+              text={text}
+              setText={setText}
+              listItems={listItems}
+              setListItems={setListItems}
+            ></SearchInput>
+            <List
+              text={text}
+              isDark={isDark}
+              setText={setText}
+              listItems={listItems}
+              setListItems={setListItems}
+            ></List>
+          </div>
+        </div>
+      ) : (
+        <div style={bgColorLight} /*className="bgColorLight"*/>
+          <div className="App">
+            <Background
+              backgroundImage={backgroundImage}
+              isDark={isDark}
+              themeDark={themeDark}
+              themeLight={themeLight}
+            ></Background>
+            <Header
+              backgroundImage={backgroundImage}
+              isDark={isDark}
+              themeDark={themeDark}
+              themeLight={themeLight}
+            ></Header>
+            <SearchInput
+              isDark={isDark}
+              text={text}
+              setText={setText}
+              listItems={listItems}
+              setListItems={setListItems}
+            ></SearchInput>
+            <List
+              text={text}
+              isDark={isDark}
+              setText={setText}
+              listItems={listItems}
+              setListItems={setListItems}
+            ></List>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
